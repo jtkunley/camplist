@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Home Page</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
-    </head>
-    <body>
-
-        <h2>Messages</h2>
-        <ul>
-            <li><a href="/messages/simple">Simple</a></li>
-            <li><a href="/messages/echo?message=Hello Jim!">Echo</a></li>
-        </ul>
-
-
-    </body>
-</html>
+@main("Home Page") {
+    <h2>Messages</h2>
+    <ul>
+        <li><a href="/messages/simple">Simple</a></li>
+        <li><a href="/messages/echo?message=Hello Jim!">Echo</a></li>
+    </ul>
+}

@@ -1,36 +1,22 @@
 package controllers
 
-import play.api.libs.json.Json
+import javax.inject.{Inject, Singleton}
 
-class UserController {
+import models.User
+import play.api.mvc.{Action, Controller}
 
-//  def getUsers: Nothing = {
-//    val users = Database.getUsers
-//    ok(Json.toJson(users))
-//  }
+@Singleton
+class UserController @Inject() extends Controller {
 
-//  def getUser(id: Long): Nothing = {
-//    val user = Database.getUser(id)
-//    if (user == null) notFound
-//    else ok(Json.toJson(user))
-//  }
-//
-//  def createUser: Nothing = {
-//    val newUser = Json.fromJson(request.body.asJson, classOf[Nothing])
-//    val inserted = Database.addUser(newUser)
-//    created(Json.toJson(inserted))
-//  }
-//
-//  def updateUser(id: Long): Nothing = {
-//    val user = Json.fromJson(request.body.asJson, classOf[Nothing])
-//    val updated = Database.updateUser(id, user)
-//    ok(Json.toJson(updated))
-//  }
-//
-//  def deleteUser(id: Long): Nothing = {
-//    Database.deleteUser(id)
-//    noContent // http://stackoverflow.com/a/2342589/1415732
-//
-//  }
+  def list = Action {
+    val users = User.findAll
+    Ok(views.html.users.list(users))
+  }
+
+  def details(id: Long) = Action {
+    User.findById(id).map { user =>
+      Ok(views.html.users.details(user))
+    }.getOrElse(NotFound)
+  }
 
 }

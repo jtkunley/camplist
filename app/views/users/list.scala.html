@@ -1,0 +1,9 @@
+@(users: List[User])
+
+@main("User List") {
+  <ul class="users">
+    @for(user <- users) {
+        <li><a href="/users/@user.id">@user.name @user.age</a></li>
+    }
+  </ul>
+}

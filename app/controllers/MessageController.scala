@@ -21,4 +21,7 @@ class MessageController @Inject() extends Controller {
     Ok(views.html.messages.simple("hello world"))
   }
 
+  def echo(msg: String) = Action {
+    Ok(views.html.messages.echo(msg))
+  }
 }

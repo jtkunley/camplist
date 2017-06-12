@@ -1,16 +1,13 @@
-# Routes
-# This file defines all application routes (Higher priority routes first)
-# ~~~~
+GET     /                      controllers.HomeController.index
 
-# An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
-# An example controller showing how to use dependency injection
-GET     /count                      controllers.CountController.count
-# An example controller showing how to write asynchronous code
-GET     /message                    controllers.AsyncController.message
+GET     /messages/simple       controllers.MessageController.simple
+GET     /messages/echo         controllers.MessageController.echo(message: String)
 
-GET     /messages/simple                    controllers.MessageController.simple
-
+# GET     /users                 controllers.UserController.getUsers
+# GET     /users/:id             controllers.UserController.getUser(id: Long)
+# POST    /users                 controllers.UserController.createUser
+# PUT     /users/:id             controllers.UserController.updateUser(id: Long)
+# DELETE  /users/:id             controllers.UserController.deleteUser(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

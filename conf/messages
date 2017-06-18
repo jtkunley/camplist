@@ -1,1 +1,3 @@
-application.name="Play Starter"
+application.name = Play Starter
+
+users.list.title = User List

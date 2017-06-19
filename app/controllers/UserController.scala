@@ -3,7 +3,7 @@ package controllers
 import models.User
 import play.api.mvc.{Action, Controller}
 
-class UserController extends Controller {
+class UserController extends Controller { 
 
   def index = Action {
     Redirect(routes.UserController.list())

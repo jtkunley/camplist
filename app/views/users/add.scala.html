@@ -1,13 +1,26 @@
 @main("Add User") {
 
-	<a href="@routes.UserController.list()">Back to Users</a>
-
 	<h2>Add User</h2>
 
 	<form action="@routes.UserController.add()" method="post">
-		<input type="text" name="name" placeholder="User name" required="true">
-		<input type="text" name="age" placeholder="User age" required="true">
-		<input type="submit" value="Add User">
+	<div style="width:600px;">
+		<div class="row">
+			<div class="small-3 columns">
+				<label for="name" class="text-right middle">Name</label>
+			</div>
+			<div class="small-9 columns">
+				<input type="text" name="name" placeholder="User name" required="true">
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-3 columns">
+				<label for="name" class="text-right middle">Age</label>
+			</div>
+			<div class="small-9 columns">
+				<input type="number" name="age" value="21" required="true">
+			</div>
+		</div>
+		<input type="submit" value="Add User" class="success button">
 	</form>
 
 }

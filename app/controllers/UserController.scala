@@ -14,18 +14,29 @@ class UserController extends Controller {
     Ok(views.html.users.list(users))
   }
 
-  def addUser = Action(parse.urlFormEncoded) {
+  def addForm = Action {
+    Ok(views.html.users.add())
+  }
+
+  def add = Action(parse.urlFormEncoded) {
     implicit request =>
       var name = request.body.get("name").get.head
-      //val age = request.body.get("age").get.head
-      User.add(name, 0)
-      Redirect(routes.UserController.list())
+      var age = request.body.get("age").get.head
+      User.add(name.trim(), Integer.parseInt(age.trim()))
+      Redirect(routes.UserController.index())
+  }
+
+  def delete(userId: Long) = Action {
+    User.delete(userId)
+    Ok
   }
 
   def details(id: Long) = Action {
     User.findById(id).map { user =>
       Ok(views.html.users.details(user))
-    }.getOrElse(NotFound)
+    }.getOrElse(
+        Redirect(routes.UserController.index())
+      )
   }
 
 }

@@ -1,9 +1,13 @@
-@(users: List[User])
+@(users: List[User])(implicit lang: Lang)
 
 @main("User List") {
-  <ul class="users">
-    @for(user <- users) {
-        <li><a href="/users/@user.id">@user.name @user.age</a></li>
-    }
-  </ul>
+	<h2>User List</h2>
+
+	<a href="@routes.UserController.addForm()">Add User</a>
+
+	<ul class="item-list">
+	@for(user <- users) {
+	    <li><a href="@routes.UserController.details(user.id)">@user.name @user.age</a></li>
+	}
+	</ul>
 }

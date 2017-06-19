@@ -20,7 +20,7 @@ object User {
     users = users ++ List(user)
   }
 
-  def delete(userId: Long): Unit = {
-    users = users.filterNot(user => user.id == userId)
+  def delete(id: Long) = {
+    users = users.filterNot(user => user.id == id)
   }
 }
